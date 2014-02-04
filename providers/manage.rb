@@ -149,7 +149,9 @@ action :create do
       gid new_resource.group_id
     end
     users_in_group = `grep #{new_resource.group_name} /etc/group | awk -F: '{ print $4 }'`.chop.split(",")
-    security_group = ( users_in_group + security_group ).uniq 
+    Chef::Log.debug("users_in_group #{@users_in_group} ")
+    Chef::Log.debug("security_group #{@security_group} ")
+    #security_group = ( users_in_group + security_group ).uniq 
     members security_group
   end
   new_resource.updated_by_last_action(true)
