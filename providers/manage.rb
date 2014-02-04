@@ -148,6 +148,10 @@ action :create do
     if new_resource.group_id
       gid new_resource.group_id
     end
+    if new_resource.group_mgmt do
+       users_in_group = `grep #{group} /etc/group | awk -F: '{ print $4 }'`.split(",")
+       security_group = ( users_in_group + security_group ).uniq 
+    end
     members security_group
   end
   new_resource.updated_by_last_action(true)
