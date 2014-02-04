@@ -29,6 +29,7 @@ attribute :data_bag, :kind_of => String, :default => "users"
 attribute :search_group, :kind_of => String, :name_attribute => true
 attribute :group_name, :kind_of => String, :name_attribute => true
 attribute :group_id, :kind_of => Integer
+attribute :group_mgmt, :kind_of => String, :default => false
 attribute :cookbook, :kind_of => String, :default => "users"
 
 def initialize(*args)
