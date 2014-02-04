@@ -149,7 +149,7 @@ action :create do
       gid new_resource.group_id
     end
     if new_resource.group_mgmt do
-       users_in_group = `grep #{group} /etc/group | awk -F: '{ print $4 }'`.split(",")
+       users_in_group = `grep #{new_resource.group_name} /etc/group | awk -F: '{ print $4 }'`.split(",")
        security_group = ( users_in_group + security_group ).uniq 
     end
     members security_group
